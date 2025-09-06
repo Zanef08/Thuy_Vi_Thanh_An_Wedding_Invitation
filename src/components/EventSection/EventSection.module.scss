@@ -1,0 +1,96 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.eventSection {
+  @include flex-column-center;
+  padding: $spacing-2xl 0;
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: $border-radius-xl;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  @include tablet-up {
+    padding: $spacing-3xl 0;
+  }
+}
+
+.iconContainer {
+  @include flex-center;
+  margin-bottom: $spacing-lg;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: $color-primary;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(184, 134, 11, 0.2));
+  
+  @include tablet-up {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.eventSection:hover .icon {
+  color: $color-primary-light;
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(184, 134, 11, 0.3));
+}
+
+.title {
+  @include heading-primary;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-style: italic;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-lg;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  @include tablet-up {
+    font-size: $font-size-2xl;
+  }
+}
+
+.details {
+  @include flex-column-center;
+  margin-bottom: $spacing-xl;
+  gap: $spacing-xs;
+}
+
+.timeLocation {
+  @include body-text;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  
+  @include tablet-up {
+    font-size: $font-size-lg;
+  }
+}
+
+.address {
+  @include body-text;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: 1.4;
+  
+  @include tablet-up {
+    font-size: $font-size-base;
+  }
+}
+
+.button {
+  min-width: 200px;
+  
+  @include tablet-up {
+    min-width: 220px;
+  }
+}

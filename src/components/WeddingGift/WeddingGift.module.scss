@@ -1,0 +1,359 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.weddingGift {
+  @include flex-column-center;
+  padding: $spacing-2xl 0;
+  text-align: center;
+  
+  @include tablet-up {
+    padding: $spacing-3xl 0;
+  }
+}
+
+.container {
+  @include container;
+  max-width: 800px;
+}
+
+.iconContainer {
+  @include flex-center;
+  margin-bottom: $spacing-lg;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: $color-text-primary;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  
+  @include tablet-up {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.title {
+  @include heading-primary;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-style: italic;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-lg;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  @include tablet-up {
+    font-size: $font-size-2xl;
+  }
+}
+
+.subtitle {
+  @include body-text;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xl;
+  line-height: 1.4;
+  
+  @include tablet-up {
+    font-size: $font-size-lg;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-xl;
+}
+
+.recipientSelector {
+  .sectionTitle {
+    font-family: 'Borel', cursive, $font-family-title;
+    font-style: italic;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
+
+  .recipientOptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-2xl;
+    flex-direction: row; // Đảm bảo luôn hiển thị ngang
+  }
+}
+
+.recipientOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  border: 1px solid #e1e5e9;
+  border-radius: $border-radius-lg;
+  background: white;
+  cursor: pointer;
+  transition: $transition-base;
+  min-width: 120px;
+
+  &:hover {
+    border-color: $color-text-primary;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    border-color: $color-text-primary;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .recipientIcon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacing-sm;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  span {
+    font-family: 'Borel', cursive, $font-family-title;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    font-size: $font-size-base;
+  }
+}
+
+.giftCard {
+  background: #f8f9fa;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  text-align: center;
+  border: 1px solid #e1e5e9;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xl;
+}
+
+.qrSection {
+  margin-bottom: $spacing-xl;
+}
+
+.qrCode {
+  display: inline-block;
+  width: 180px;
+  height: 180px;
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: $border-radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.qrImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: $border-radius-md;
+}
+
+.qrPlaceholder {
+  text-align: center;
+  color: $color-text-secondary;
+
+  .qrText {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-xs;
+  }
+
+  .qrSubtext {
+    font-size: $font-size-sm;
+    opacity: 0.8;
+  }
+}
+
+.qrSubtext {
+  font-size: $font-size-sm;
+  opacity: 0.8;
+  color: $color-text-secondary;
+  margin-top: $spacing-sm;
+  text-align: center;
+}
+
+.bankDetails {
+  background: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+}
+
+.bankItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-sm 0;
+
+  .label {
+    font-family: 'Borel', cursive, $font-family-title;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    min-width: 120px;
+  }
+
+  .value {
+    color: $color-text-secondary;
+    font-family: 'Courier New', monospace;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.submitButton {
+  min-width: 200px;
+  margin: 0 auto;
+  
+  @include tablet-up {
+    min-width: 220px;
+  }
+}
+
+.successMessage {
+  text-align: center;
+  padding: $spacing-xl;
+
+  .successIcon {
+    font-size: 3rem;
+    margin-bottom: $spacing-lg;
+    animation: bounce 2s infinite;
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+    color: $color-text-primary;
+    margin-bottom: $spacing-md;
+    font-weight: $font-weight-semibold;
+  }
+
+  p {
+    color: $color-text-primary;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    margin-bottom: $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+// Responsive design
+@include mobile {
+  .weddingGift {
+    padding: $spacing-xl 0;
+
+    .container {
+      padding: 0 $spacing-md;
+    }
+
+    .title {
+      font-size: $font-size-lg;
+    }
+
+    .subtitle {
+      font-size: $font-size-sm;
+    }
+
+    .recipientSelector {
+      .recipientOptions {
+        flex-direction: row; // Luôn hiển thị ngang
+        align-items: center;
+        gap: $spacing-lg; // Giảm gap trên mobile
+        justify-content: center;
+      }
+    }
+
+    .recipientOption {
+      min-width: 80px; // Giảm kích thước để phù hợp layout ngang
+      padding: $spacing-sm; // Giảm padding
+      flex-direction: column; // Icon ở trên, text ở dưới
+
+      .recipientIcon {
+        width: 32px; // Giảm kích thước icon
+        height: 32px;
+        margin-bottom: $spacing-xs;
+      }
+
+      span {
+        font-size: $font-size-xs; // Giảm font size
+      }
+    }
+
+    .giftCard {
+      padding: $spacing-lg;
+    }
+
+    .cardTitle {
+      font-size: $font-size-base;
+    }
+
+    .qrCode {
+      width: 140px;
+      height: 140px;
+    }
+
+    .bankDetails {
+      padding: $spacing-md;
+
+      .bankItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing-xs;
+
+        .label {
+          min-width: auto;
+        }
+      }
+    }
+
+    .submitButton {
+      min-width: 180px;
+    }
+  }
+}
+

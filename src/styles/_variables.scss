@@ -1,0 +1,86 @@
+// Colors
+$color-background: #eed1a6;
+$color-background-secondary: #e6c49a;
+$color-background-accent: #f5e1c4;
+$color-text-primary: #2D2D2D;
+$color-text-secondary: #5A5A5A;
+$color-text-muted: #8B8B8B;
+$color-white: #FFFFFF;
+$color-black: #1A1A1A;
+$color-primary: #B8860B;
+$color-primary-light: #D4AF37;
+$color-primary-dark: #8B6914;
+$color-accent: #E8D5B7;
+$color-accent-light: #F0E6D2;
+$color-button-bg: #2D2D2D;
+$color-button-text: #FFFFFF;
+$color-button-hover: #404040;
+$color-border: #E5E5E5;
+$color-border-light: #F0F0F0;
+
+// Typography
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-script: 'Great Vibes', cursive;
+$font-family-serif: 'Playfair Display', serif;
+$font-family-title: 'Merriweather', serif;
+
+// Font sizes
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+$font-size-5xl: 3rem;      // 48px
+$font-size-6xl: 3.75rem;   // 60px
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Spacing
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-2xl: 3rem;     // 48px
+$spacing-3xl: 4rem;     // 64px
+$spacing-4xl: 6rem;     // 96px
+
+// Breakpoints
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1440px;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Transitions
+$transition-fast: 0.15s ease-in-out;
+$transition-base: 0.3s ease-in-out;
+$transition-slow: 0.5s ease-in-out;
+
+// Container max widths
+$container-max-width: 1200px;
+$container-max-width-tablet: 1000px;
+$container-max-width-desktop: 1200px;

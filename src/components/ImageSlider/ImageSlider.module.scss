@@ -1,0 +1,547 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.imageSlider {
+  @include container;
+  padding: $spacing-4xl 0;
+  background-color: $color-background;
+}
+
+.iconContainer {
+  @include flex-center;
+  margin-bottom: $spacing-lg;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: $color-text-primary;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  
+  @include tablet-up {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.sliderTitle {
+  @include heading-primary;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-style: italic;
+  font-size: $font-size-xl;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  
+  @include tablet-up {
+    font-size: $font-size-2xl;
+  }
+}
+
+.sliderDescription {
+  @include body-text;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  max-width: 600px;
+  margin: 0 auto $spacing-3xl;
+  line-height: 1.6;
+  text-align: center;
+  
+  @include tablet-up {
+    font-size: $font-size-lg;
+  }
+}
+
+.sliderContainer {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto $spacing-3xl;
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.slideContainer {
+  flex: 1;
+  position: relative;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.slideImage {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+  background-color: #f8f8f8;
+}
+
+.slideContainer:hover .slideImage {
+  transform: scale(1.02);
+}
+
+.slideInfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: $spacing-xl;
+  color: white;
+}
+
+.slideCounter {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.loadingContainer {
+  @include flex-center;
+  padding: $spacing-4xl 0;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid $color-text-primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sliderButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+
+  &:hover svg {
+    color: #000;
+  }
+}
+
+.prevButton {
+  left: -25px;
+}
+
+.nextButton {
+  right: -25px;
+}
+
+.thumbnailContainer {
+  margin-bottom: $spacing-3xl;
+}
+
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: $spacing-md;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thumbnail {
+  aspect-ratio: 1;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: $transition-base;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.active {
+    border-color: $color-button-bg;
+    transform: scale(1.05);
+  }
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  background-color: #f8f8f8;
+}
+
+.thumbnail:hover .thumbnailImage {
+  transform: scale(1.1);
+}
+
+.sliderControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xl;
+  margin-top: $spacing-2xl;
+}
+
+.controlButton {
+  @include button-primary;
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-base;
+  border-radius: $border-radius-lg;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.controlInfo {
+  @include body-text;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  background: white;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+// Dots Navigation
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-2xl;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.2);
+  }
+
+  &:focus {
+    outline: 2px solid $color-button-bg;
+    outline-offset: 2px;
+  }
+}
+
+.activeDot {
+  background-color: $color-button-bg;
+  transform: scale(1.2);
+
+  &:hover {
+    background-color: $color-button-bg;
+  }
+}
+
+// Modal
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalSlideIn 0.3s ease-out;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.modalImage {
+  max-width: 400px; // Giữ kích thước ban đầu
+  max-height: 600px; // Giữ kích thước ban đầu
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  pointer-events: none; // Để không cản swipe
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.closeButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95) rotate(90deg);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+
+  &:hover svg {
+    color: #000;
+  }
+}
+
+.modalInfo {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: $font-weight-medium;
+  animation: modalInfoSlideUp 0.4s ease-out 0.1s both;
+  pointer-events: none; // Để không cản swipe
+}
+
+.modalCounter {
+  font-size: $font-size-base;
+  opacity: 0.9;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+// Modal Animations
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalInfoSlideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Responsive adjustments
+@include tablet {
+  .sliderContainer {
+    max-width: 800px;
+    position: relative;
+  }
+
+  .slideImage {
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .sliderButton {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .prevButton {
+    left: -22px;
+  }
+
+  .nextButton {
+    right: -22px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .modalImage {
+    max-width: 350px; // Nhỏ hơn một chút trên tablet
+    max-height: 500px;
+  }
+
+  .closeButton {
+    width: 45px;
+    height: 45px;
+    top: 15px;
+    right: 15px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .modalInfo {
+    bottom: -50px;
+  }
+}
+
+@include mobile {
+  .sliderContainer {
+    max-width: 100%;
+    position: relative;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  .slideContainer {
+    max-width: 100%;
+    order: 2;
+  }
+
+  .slideImage {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .sliderButton {
+    display: none; // Ẩn hoàn toàn button trên mobile
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .modalImage {
+    max-width: 300px; // Nhỏ hơn trên mobile
+    max-height: 400px;
+  }
+
+  .closeButton {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .modalInfo {
+    bottom: -45px;
+  }
+
+  .modalCounter {
+    font-size: $font-size-sm;
+  }
+}

@@ -1,0 +1,187 @@
+@import './variables';
+
+// Responsive mixins
+@mixin mobile {
+  @media (max-width: #{$breakpoint-xs - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-xs}) and (max-width: #{$breakpoint-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Typography mixins
+@mixin heading-primary {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+@mixin heading-script {
+  font-family: $font-family-script;
+  font-weight: $font-weight-normal;
+  color: $color-text-primary;
+}
+
+@mixin body-text {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-normal;
+  color: $color-text-primary;
+}
+
+// Button mixins
+@mixin button-primary {
+  background: linear-gradient(135deg, $color-button-bg 0%, $color-button-hover 100%);
+  color: $color-button-text;
+  border: none;
+  border-radius: $border-radius-xl;
+  padding: $spacing-lg $spacing-2xl;
+  font-family: 'Borel', cursive, $font-family-primary;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  line-height: 1.4;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 12px 32px rgba(0, 0, 0, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, $color-button-hover 0%, $color-button-bg 100%);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.15),
+      0 3px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Container mixins
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  
+  @include tablet-up {
+    max-width: $container-max-width-tablet;
+    padding: 0 $spacing-lg;
+  }
+  
+  @include desktop-up {
+    max-width: $container-max-width-desktop;
+    padding: 0 $spacing-xl;
+  }
+}
+
+// Section spacing
+@mixin section-spacing {
+  padding: $spacing-3xl 0;
+  
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+// Torn paper effect
+@mixin torn-paper-top {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(45deg, transparent 33.333%, $color-background 33.333%, $color-background 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, $color-background 33.333%, $color-background 66.667%, transparent 66.667%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px;
+  }
+}
+
+@mixin torn-paper-bottom {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(-45deg, transparent 33.333%, $color-background 33.333%, $color-background 66.667%, transparent 66.667%), linear-gradient(45deg, transparent 33.333%, $color-background 33.333%, $color-background 66.667%, transparent 66.667%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px;
+  }
+}

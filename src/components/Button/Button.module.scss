@@ -1,0 +1,72 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.button {
+  @include button-primary;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// Size variants
+.small {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-xs;
+  border-radius: $border-radius-sm;
+}
+
+.medium {
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-sm;
+  border-radius: $border-radius-md;
+}
+
+.large {
+  padding: $spacing-lg $spacing-2xl;
+  font-size: $font-size-base;
+  border-radius: $border-radius-lg;
+}
+
+// Style variants
+.primary {
+  background-color: $color-button-bg;
+  color: $color-button-text;
+  
+  &:hover:not(:disabled) {
+    background-color: lighten($color-button-bg, 10%);
+  }
+}
+
+.secondary {
+  background-color: transparent;
+  color: $color-text-primary;
+  border: 2px solid $color-text-primary;
+  
+  &:hover:not(:disabled) {
+    background-color: $color-text-primary;
+    color: $color-white;
+  }
+}
+
+.outline {
+  background-color: transparent;
+  color: $color-button-bg;
+  border: 2px solid $color-button-bg;
+  
+  &:hover:not(:disabled) {
+    background-color: $color-button-bg;
+    color: $color-button-text;
+  }
+}

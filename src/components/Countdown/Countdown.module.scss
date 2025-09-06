@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.countdown {
+  @include flex-column-center;
+  padding: $spacing-3xl 0;
+  text-align: center;
+  
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.title {
+  @include heading-primary;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-style: italic;
+  font-size: $font-size-xl;
+  text-transform: uppercase;
+  margin-bottom: $spacing-2xl;
+  letter-spacing: 1px;
+  
+  @include tablet-up {
+    font-size: $font-size-2xl;
+  }
+}
+
+.timer {
+  display: flex;
+  gap: $spacing-xl;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  @include mobile {
+    gap: $spacing-lg;
+  }
+}
+
+.timeUnit {
+  @include flex-column-center;
+  min-width: 80px;
+  
+  @include mobile {
+    min-width: 60px;
+  }
+}
+
+.number {
+  @include heading-primary;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  margin-bottom: $spacing-sm;
+  
+  @include tablet-up {
+    font-size: $font-size-5xl;
+  }
+  
+  @include desktop-up {
+    font-size: $font-size-6xl;
+  }
+}
+
+.label {
+  @include body-text;
+  font-family: 'Borel', cursive, $font-family-title;
+  font-size: $font-size-sm;
+  text-transform: lowercase;
+  color: $color-text-primary;
+  
+  @include tablet-up {
+    font-size: $font-size-base;
+  }
+}

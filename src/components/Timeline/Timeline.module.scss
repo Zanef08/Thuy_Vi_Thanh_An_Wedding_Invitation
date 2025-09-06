@@ -1,0 +1,225 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.timeline {
+  @include container;
+  position: relative;
+  padding: $spacing-4xl 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timelineLine {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #999;
+    transform: translateX(-50%);
+  }
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: $spacing-4xl;
+  display: flex;
+  align-items: center;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timelineNode {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  background: #333;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nodeNumber {
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.left {
+  .eventContent {
+    margin-right: auto;
+    padding-right: $spacing-md;
+    text-align: right;
+    max-width: 45%;
+  }
+}
+
+.right {
+  .eventContent {
+    margin-left: auto;
+    padding-left: $spacing-md;
+    text-align: left;
+    max-width: 45%;
+  }
+}
+
+// .eventContent {
+//   background: white;
+//   padding: $spacing-xl;
+//   border-radius: $border-radius-lg;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//   border: 1px solid #f0f0f0;
+// }
+
+.eventTime {
+  @include heading-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-sm;
+  opacity: 0.8;
+}
+
+.eventTitle {
+  @include heading-primary;
+  font-size: 13px;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-sm;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Arial', sans-serif;
+}
+
+.eventDescription {
+  @include body-text;
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Responsive adjustments - Mỗi màn hình có style riêng
+@include mobile {
+  .timeline {
+    max-width: 400px;
+  }
+  
+  .left, .right {
+    .eventContent {
+      max-width: 30%;
+      padding-right: $spacing-sm;
+      padding-left: $spacing-sm;
+    }
+  }
+  
+  .timelineNode {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nodeNumber {
+    font-size: 10px;
+  }
+  
+  .eventTitle {
+    font-size: 11px;
+  }
+}
+
+@include tablet {
+  .timeline {
+    max-width: 600px;
+  }
+  
+  .left, .right {
+    .eventContent {
+      max-width: 35%;
+      padding-right: $spacing-md;
+      padding-left: $spacing-md;
+    }
+  }
+  
+  .timelineNode {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nodeNumber {
+    font-size: 11px;
+  }
+  
+  .eventTitle {
+    font-size: 12px;
+  }
+}
+
+@include desktop {
+  .timeline {
+    max-width: 800px;
+  }
+  
+  .left, .right {
+    .eventContent {
+      max-width: 40%;
+      padding-right: $spacing-lg;
+      padding-left: $spacing-lg;
+    }
+  }
+  
+  .timelineNode {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .nodeNumber {
+    font-size: 12px;
+  }
+  
+  .eventTitle {
+    font-size: 13px;
+  }
+}
+
+@include desktop-up {
+  .timeline {
+    max-width: 1000px;
+  }
+  
+  .left, .right {
+    .eventContent {
+      max-width: 42%;
+      padding-right: $spacing-xl;
+      padding-left: $spacing-xl;
+    }
+  }
+  
+  .timelineNode {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .nodeNumber {
+    font-size: 13px;
+  }
+  
+  .eventTitle {
+    font-size: 14px;
+  }
+}
+
