@@ -253,7 +253,7 @@ const Home = () => {
             title="Tiệc Cưới"
             time="Cả ngày"
             location="Tư Gia"
-            address="Tạp hóa Thành Đạt, Thi xa Cai Lay, Tien Giang, Vietnam"
+            address="Tạp hóa Thành Đạt <br /> Thi xa Cai Lay <br /> Tien Giang, Vietnam"
             icon={ChampagneIcon}
             onButtonClick={() => handleLocationClick("95X6+59 Thi xa Cai Lay, Tien Giang, Vietnam")}
           />

@@ -19,7 +19,7 @@ const EventSection = ({
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.details}>
         <p className={styles.timeLocation}>{time} - {location}</p>
-        <p className={styles.address}>{address}</p>
+        <p className={styles.address} dangerouslySetInnerHTML={{ __html: address }}></p>
       </div>
       <Button 
         onClick={onButtonClick}
