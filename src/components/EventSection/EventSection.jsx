@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button';
+import { Button } from '@mui/material';
 import styles from './EventSection.module.scss';
 
 const EventSection = ({ 
@@ -23,6 +23,8 @@ const EventSection = ({
       </div>
       <Button 
         onClick={onButtonClick}
+        variant="outlined"
+        size="medium"
         className={styles.button}
       >
         {buttonText}

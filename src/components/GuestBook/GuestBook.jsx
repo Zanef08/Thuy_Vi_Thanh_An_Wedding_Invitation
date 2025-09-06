@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../Button';
+import { Button, TextField, Box } from '@mui/material';
 import { guestbookAPI, createGuestBookEntryWithSignature } from '../../utils/api';
 import styles from './GuestBook.module.scss';
 
@@ -188,7 +188,7 @@ const GuestBook = () => {
         <div className={styles.content}>
           <div className={styles.formSection}>
             <h3 className={styles.sectionTitle}>Viết lời chúc</h3>
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <Box component="form" onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.formGroup}>
                 <label>Chữ ký của bạn</label>
                 <div className={styles.signatureContainer}>
@@ -214,39 +214,44 @@ const GuestBook = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="guestName">Tên của bạn *</label>
-                <input
-                  type="text"
-                  id="guestName"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                  placeholder="Nhập tên của bạn"
-                  required
-                />
-              </div>
+              
+              <TextField
+                fullWidth
+                required
+                id="guestName"
+                label="Tên của bạn"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                placeholder="Nhập tên của bạn"
+                margin="normal"
+                variant="outlined"
+              />
 
-              <div className={styles.formGroup}>
-                <label htmlFor="message">Lời chúc *</label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Viết lời chúc mừng của bạn..."
-                  rows="4"
-                  required
-                />
-              </div>
-
+              <TextField
+                fullWidth
+                required
+                id="message"
+                label="Lời chúc"
+                multiline
+                rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Viết lời chúc mừng của bạn..."
+                margin="normal"
+                variant="outlined"
+              />
 
               <Button 
                 type="submit" 
+                variant="contained"
+                size="large"
                 className={styles.submitButton}
                 disabled={isUploading}
+                sx={{ mt: 2 }}
               >
                 {isUploading ? 'Đang tải lên...' : 'Gửi Lời Chúc'}
               </Button>
-            </form>
+            </Box>
 
             <AnimatePresence>
               {isSubmitted && (

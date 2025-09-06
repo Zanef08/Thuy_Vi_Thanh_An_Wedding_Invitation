@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Button from '../Button';
 import styles from './WeddingGift.module.scss';
 
 const WeddingGift = () => {

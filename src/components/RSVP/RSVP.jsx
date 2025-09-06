@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Button from '../Button';
+import { 
+  TextField, 
+  Button, 
+  Select, 
+  MenuItem, 
+  FormControl, 
+  InputLabel, 
+  RadioGroup, 
+  FormControlLabel, 
+  Radio, 
+  Box,
+  Typography
+} from '@mui/material';
 import { rsvpAPI, formatRSVPData } from '../../utils/api';
 import styles from './RSVP.module.scss';
 
@@ -76,90 +88,96 @@ const RSVP = () => {
         </p>
 
         {!isSubmitted ? (
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.formGroup}>
-              <label htmlFor="name">Họ và tên *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-                placeholder="Nhập họ và tên của bạn"
-              />
-            </div>
+          <Box component="form" onSubmit={handleSubmit} className={styles.form}>
+            <TextField
+              fullWidth
+              required
+              id="name"
+              name="name"
+              label="Họ và tên"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Nhập họ và tên của bạn"
+              margin="normal"
+              variant="outlined"
+            />
 
-            <div className={styles.formGroup}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Nhập email của bạn"
-              />
-            </div>
+            <TextField
+              fullWidth
+              id="email"
+              name="email"
+              label="Email"
+              type="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Nhập email của bạn"
+              margin="normal"
+              variant="outlined"
+            />
 
-            <div className={styles.formGroup}>
-              <label htmlFor="phone">Số điện thoại</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                placeholder="Nhập số điện thoại"
-              />
-            </div>
+            <TextField
+              fullWidth
+              id="phone"
+              name="phone"
+              label="Số điện thoại"
+              type="tel"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="Nhập số điện thoại"
+              margin="normal"
+              variant="outlined"
+            />
 
-            <div className={styles.formGroup}>
-              <label htmlFor="guests">Số lượng khách</label>
-              <select
+            <FormControl fullWidth margin="normal">
+              <InputLabel id="guests-label">Số lượng khách</InputLabel>
+              <Select
+                labelId="guests-label"
                 id="guests"
                 name="guests"
                 value={formData.guests}
+                label="Số lượng khách"
                 onChange={handleInputChange}
               >
-                <option value={1}>1 người</option>
-                <option value={2}>2 người</option>
-                <option value={3}>3 người</option>
-                <option value={4}>4 người</option>
-                <option value={5}>5 người</option>
-              </select>
-            </div>
+                <MenuItem value={1}>1 người</MenuItem>
+                <MenuItem value={2}>2 người</MenuItem>
+                <MenuItem value={3}>3 người</MenuItem>
+                <MenuItem value={4}>4 người</MenuItem>
+                <MenuItem value={5}>5 người</MenuItem>
+              </Select>
+            </FormControl>
 
-            <div className={styles.formGroup}>
-              <label>Bạn có tham dự không?</label>
-              <div className={styles.radioGroup}>
-                <label className={styles.radioLabel}>
-                  <input
-                    type="radio"
-                    name="attending"
-                    value="yes"
-                    checked={formData.attending === 'yes'}
-                    onChange={handleInputChange}
-                  />
-                  <span className={styles.radioText}>Có, tôi sẽ tham dự</span>
-                </label>
-                <label className={styles.radioLabel}>
-                  <input
-                    type="radio"
-                    name="attending"
-                    value="no"
-                    checked={formData.attending === 'no'}
-                    onChange={handleInputChange}
-                  />
-                  <span className={styles.radioText}>Xin lỗi, tôi không thể tham dự</span>
-                </label>
-              </div>
-            </div>
+            <FormControl component="fieldset" margin="normal">
+              <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium' }}>
+                Bạn có tham dự không?
+              </Typography>
+              <RadioGroup
+                name="attending"
+                value={formData.attending}
+                onChange={handleInputChange}
+              >
+                <FormControlLabel 
+                  value="yes" 
+                  control={<Radio />} 
+                  label="Có, tôi sẽ tham dự" 
+                />
+                <FormControlLabel 
+                  value="no" 
+                  control={<Radio />} 
+                  label="Xin lỗi, tôi không thể tham dự" 
+                />
+              </RadioGroup>
+            </FormControl>
 
-            <Button type="submit" className={styles.submitButton}>
+            <Button 
+              type="submit" 
+              variant="contained" 
+              size="large"
+              className={styles.submitButton}
+              sx={{ mt: 3, minWidth: 200 }}
+            >
               Gửi Xác Nhận
             </Button>
-          </form>
+          </Box>
         ) : (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

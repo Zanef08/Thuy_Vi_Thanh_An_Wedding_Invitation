@@ -75,6 +75,10 @@ const Home = () => {
     window.open(`https://maps.google.com/?q=${encodeURIComponent(location)}`, '_blank');
   };
 
+  const handleInstagramClick = () => {
+    window.open('https://instagram.com/thanhan_thuyvi', '_blank');
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -234,7 +238,7 @@ const Home = () => {
             title="Lễ Cưới"
             time="5:00 giờ"
             location="Nhà thờ Vũng Tàu"
-            address="6 Thống Nhất, Vũng Tàu, Bà Rịa - Vũng Tàu"
+            address="6 Thống Nhất <br /> phường 1, Vũng Tàu <br /> Bà Rịa - Vũng Tàu"
             icon={ChurchIcon}
             onButtonClick={() => handleLocationClick("6 Thống Nhất, Vũng Tàu, Bà Rịa - Vũng Tàu")}
           />
