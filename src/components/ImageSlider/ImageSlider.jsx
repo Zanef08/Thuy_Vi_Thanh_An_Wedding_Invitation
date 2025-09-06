@@ -270,7 +270,6 @@ const ImageSlider = () => {
         </button>
       </div>
 
-
       {/* Modal */}
       {isModalOpen && (
         <div className={styles.modal} onClick={closeModal}>

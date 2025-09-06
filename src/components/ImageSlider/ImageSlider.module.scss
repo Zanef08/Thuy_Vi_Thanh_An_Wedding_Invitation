@@ -76,6 +76,7 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   max-width: 400px;
   margin: 0 auto;
+  transition: all 0.2s ease-out;
 }
 
 .slideImage {
@@ -84,7 +85,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.15s ease-out;
   background-color: #f8f8f8;
 }
 
@@ -141,7 +142,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-out;
   z-index: 10;
   backdrop-filter: blur(10px);
 
@@ -161,7 +162,7 @@
     width: 18px;
     height: 18px;
     color: #333;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease-out;
   }
 
   &:hover svg {
@@ -195,7 +196,7 @@
   overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: $transition-base;
+  transition: all 0.2s ease-out;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
@@ -213,7 +214,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease-out;
   background-color: #f8f8f8;
 }
 
@@ -234,7 +235,7 @@
   padding: $spacing-md $spacing-xl;
   font-size: $font-size-base;
   border-radius: $border-radius-lg;
-  transition: $transition-base;
+  transition: all 0.2s ease-out;
 
   &:hover {
     transform: translateY(-2px);
@@ -270,7 +271,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-out;
   padding: 0;
 
   &:hover {
@@ -334,7 +335,7 @@
   object-fit: contain;
   border-radius: $border-radius-lg;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease-out;
   pointer-events: none; // Để không cản swipe
   
   &:hover {
@@ -355,7 +356,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-out;
   z-index: 1001;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -374,7 +375,7 @@
     width: 24px;
     height: 24px;
     color: #333;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease-out;
   }
 
   &:hover svg {
@@ -438,6 +439,8 @@
   .sliderContainer {
     max-width: 800px;
     position: relative;
+    flex-direction: row;
+    align-items: center;
   }
 
   .slideImage {
@@ -499,16 +502,20 @@
     position: relative;
     flex-direction: column;
     gap: $spacing-md;
+    align-items: center;
   }
 
   .slideContainer {
     max-width: 100%;
-    order: 2;
+    width: 100%;
+    order: 1;
+    margin: 0;
   }
 
   .slideImage {
-    height: 300px;
+    height: 600px;
     object-fit: cover;
+    width: 100%;
   }
 
   .sliderButton {
@@ -521,8 +528,9 @@
   }
 
   .modalImage {
-    max-width: 300px; // Nhỏ hơn trên mobile
-    max-height: 400px;
+    max-width: 250px; // Nhỏ hơn trên mobile
+    max-height: 500px;
+    aspect-ratio: 2/3; // Tỷ lệ dọc hơn (portrait)
   }
 
   .closeButton {
@@ -543,5 +551,23 @@
 
   .modalCounter {
     font-size: $font-size-sm;
+  }
+}
+
+// Extra small mobile devices
+@media (max-width: 480px) {
+  .sliderContainer {
+    padding: 0 $spacing-sm;
+  }
+
+  .slideImage {
+    height: 500px;
+    aspect-ratio: 2/3; // Tỷ lệ dọc hơn (portrait)
+  }
+
+  .modalImage {
+    max-width: 220px;
+    max-height: 450px;
+    aspect-ratio: 2/3; // Tỷ lệ dọc hơn (portrait)
   }
 }
