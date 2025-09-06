@@ -8,8 +8,8 @@ export const responsiveImages = {
     desktop: 'FTW01220.jpg'    // Image for desktop screens (> 1024px)
   },
   bottom: {
-    mobile: 'FTW02724.jpg',    // Image for mobile screens (< 768px)
-    tablet: 'FTW02724.jpg',    // Image for tablet screens (768px - 1024px)
+    mobile: 'FTW01480.jpg',    // Image for mobile screens (< 768px)
+    tablet: 'FTW01480.jpg',    // Image for tablet screens (768px - 1024px)
     desktop: 'FTW01290.jpg'    // Image for desktop screens (> 1024px)
   }
 };
